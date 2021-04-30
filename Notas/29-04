@@ -1,0 +1,14 @@
+Distintos set de datos:
+Instancias 3x3 con 1 fila con 0
+Números 0 al 9
+Atributos compartidos:
+- Estado (9 Atributos)
+- Container de pick (1 Att)
+- Container destino (1 Att)
+- Cantidad de container desordenados por columna (3 Att)
+- Cabeceras de cada columna (3 Att)
+- Columna con mayor cantidad de containers [ -1 -> si todos son iguales, 0-N si hay una mayor] (1 Att)
+Transformaciones:
+- Compactación
+- Normalización
+- Elevación 
