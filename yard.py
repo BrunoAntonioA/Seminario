@@ -1,21 +1,21 @@
 import random
 
 class Yard:
-  def __init__(self, x, y, d):
+  def __init__(self, x, y, d, a, b):
     self.max_height = y
     self.maxValue = 0
     self.minCost = 0
     self.stacks = [] 
     self.stackValues = []
     self.possibleMoves = []
-    self.initYard(x, y, d)
+    self.initYard(x, y, d, a, b)
  
   #Function to initialize a Yard 
-  def initYard(self, x, y, discount):
+  def initYard(self, x, y, discount, a, b):
     for i in range(x):
       stack = []
       for j in range(y - discount):
-        n = random.randint(0, 100)
+        n = random.randint(a, b)
         stack.append(n)
         if n > self.maxValue:
           self.maxValue = n

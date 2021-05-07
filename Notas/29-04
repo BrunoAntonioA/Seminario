@@ -1,14 +1,25 @@
 Distintos set de datos:
 Instancias 3x3 con 1 fila con 0
-Números 0 al 9
+Números 1 al 99
 Atributos compartidos:
 - Estado (9 Atributos)
-- Container de pick (1 Att)
-- Container destino (1 Att)
+- Container de pick (1 Att) Etiqueta 1
+- Container destino (1 Att) Etiqueta 2
 - Cantidad de container desordenados por columna (3 Att)
-- Cabeceras de cada columna (3 Att)
-- Columna con mayor cantidad de containers [ -1 -> si todos son iguales, 0-N si hay una mayor] (1 Att)
+
+- Cabeceras de cada columna (3 Att) // Redundancia con la elevación de los estados 
+
+- Columna con mayor cantidad de containers [ -1 -> si todos son iguales, 0-N si hay una mayor] (1 Att) // 
+- Cantidad de contenedores totales de la columna
+
 Transformaciones:
 - Compactación
 - Normalización
 - Elevación 
+
+Generación estados automatizadas con:
+- Valores h, s, n (Altura, stacks, cantidad de contenedores)
+- Rango de datos a, b
+- Transformaciones (3 parámetros) Compact, Norm, Ele
+
+Separar un archivo donde se generen los atributos

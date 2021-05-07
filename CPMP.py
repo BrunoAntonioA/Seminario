@@ -1,4 +1,5 @@
 import copy
+import numpy as np
 
 class CPMP_Node():
   def __init__(self, data, parent, move=(0,0)):
@@ -30,18 +31,34 @@ class CPMP_Node():
       initMoves.append(self.move[0])
       finalMoves.append(self.move[1])
       self = self.parent
-    return (states, initMoves, finalMoves)
+    return states, initMoves, finalMoves
 
-  def getData2(self, states, initMoves, finalMoves):
+
+  # This function iterates trought the node s tree path & extract his states & moves
+  def get_data(self, states, init_moves, final_moves, compact, norm, elev):
     while self.parent:
       self.parent.data.fillStacksWithCeros()
-      self.parent.data.normalizeState()
+      if compact:
+        self.parent.data.compactState()
+      if norm:
+        self.parent.data.normalizeState()
+      if elev:
+        self.parent.data.elevateState()
       flatStacks = []
+      max = -1
       for stack in self.parent.data.stacks:
+        if len(stack) > max:
+          max = len(stack)
+        elif len(stack) == max:
+          max = -1
         for item in stack:
           flatStacks.append(item)
+      for val in self.parent.data.stackValues:
+        flatStacks.append(val)
+      flatStacks.append(self.parent.data.minCost)
+      flatStacks.append(max)
       states.append(flatStacks)
-      initMoves.append(self.move[0])
-      finalMoves.append(self.move[1])
+      init_moves.append(self.move[0])
+      final_moves.append(self.move[1])
       self = self.parent
-    return (states, initMoves, finalMoves)
+    return states, init_moves, final_moves
